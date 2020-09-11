@@ -47,6 +47,8 @@ module.exports = {
       } else {
         throw new Error("GitHub token was not found in the response");
       }
+    } catch(error){
+        return error;
     } finally {
       status.stop();
     }

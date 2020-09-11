@@ -25,6 +25,8 @@ module.exports = {
     try {
       const response = await github.repos.createForAuthenticatedUser(data);
       return response.data.ssh_url;
+    } catch(error) {
+        return error;
     } finally {
       status.stop();
     }
@@ -56,7 +58,7 @@ module.exports = {
         .then(git.addRemote('origin', url))
         .then(git.push('origin', 'master'));
     } catch(error) {
-        throw new Error(error)
+        return error;
     } finally {
       status.stop();
     }
