@@ -1,6 +1,6 @@
 const CLI = require('clui');
 const fs = require('fs');
-const git = require('simple-git/promise')();
+const git = require('cmd-executor').git
 const Spinner = CLI.Spinner;
 const touch = require("touch");
 const _ = require('lodash');
