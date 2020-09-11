@@ -29,7 +29,6 @@ const getGithubToken = async () => {
     return token;
 };
 
-
 const run = async () => {
     try {
       // Retrieve & Set Authentication Token
@@ -43,7 +42,11 @@ const run = async () => {
       await repo.createGitignore();
   
       // Set up local repository and push to remote
-      await repo.setupRepo(url);
+      repo.setupRepo(url).then((result) => {
+          console.log(result)
+      }).catch(error => {
+          console.log(error);
+      });
   
       console.log(chalk.green('All done!'));
     } catch(err) {
